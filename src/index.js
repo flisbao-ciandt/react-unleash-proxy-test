@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import FlagProvider from '@unleash/proxy-client-react';
+
+const config = {
+  url: 'http://localhost:3001/proxy',
+  clientKey: 'proxy-secret',
+  refreshInterval: 15,
+  appName: 'test',
+  environment: 'development',
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <FlagProvider config={config}>
+      <App />
+    </FlagProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
